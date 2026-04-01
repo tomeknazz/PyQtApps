@@ -167,7 +167,7 @@ class DispatcherPanel(QWidget):
         self.cpu_bar.setValue(int(self.cpu_usage))
 
         # Symulacja temperatury: Rośnie gdy CPU wysokie, spada gdy działa wentylator
-        heat_factor = (self.cpu_usage - 30) * 0.1  # Jeśli CPU > 30%, generuje ciepło
+        heat_factor = (self.cpu_usage - 10) * 0.1  # Jeśli CPU > 30%, generuje ciepło
         cooling_factor = 5.0 if self.fan_active else 0.0
 
         self.simulated_temp += heat_factor - cooling_factor
@@ -210,7 +210,9 @@ class DispatcherPanel(QWidget):
             events = [
                 "Zacięcie materiału na podajniku taśmowym nr 3.",
                 "Spadek ciśnienia w układzie pneumatycznym.",
-                "Błąd odczytu z czujnika zbliżeniowego."
+                "Błąd odczytu z czujnika zbliżeniowego.",
+                "Coś się zepsuło",
+                "Coś wybuchło"
             ]
             self.log_event(f"AWARIA: {random.choice(events)}")
 
